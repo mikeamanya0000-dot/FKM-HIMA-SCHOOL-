@@ -75,7 +75,15 @@ input,select,textarea{outline:none}.bg-gradient-to-r{background:linear-gradient(
 <div id="studentModal" class="hidden fixed inset-0 bg-black/70 z-[110] flex items-center justify-center p-4"><div class="bg-white rounded-2xl max-w-2xl w-full p-6 max-h-[90vh] overflow-auto"><div class="flex justify-between mb-4"><h2 class="font-black">STUDENT FULL DETAILS</h2><button onclick="document.getElementById('studentModal').classList.add('hidden')" class="bg-gray-100 w-8 h-8 rounded-full font-bold">X</button></div><div id="studentDetails" class="text-xs space-y-2"></div></div></div>
 <script type="module">
 import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";import {initializeFirestore,persistentLocalCache,persistentMultipleTabManager,collection,addDoc,onSnapshot} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";import {getStorage,ref,uploadString,getDownloadURL} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
-const firebaseConfig={apiKey:"AIzaSyCKKERfGvuXNuqPjzvdnLmALffUf6wSzXg",authDomain:"fr-kanyoza-2027-new.firebaseapp.com",projectId:"fr-kanyoza-2027-new",storageBucket:"fr-kanyoza-2027-new.firebasestorage.app",messagingSenderId:"956730370096",appId:"1:956730370096:web:8d419718b3a7b71d5925f5"};
+const firebaseConfig = {
+  apiKey: "AIzaSyDhkpS7hG9SJa5QGqXC2xs-wf9G2p1X3Y8",
+  authDomain: "fr-kanyoza-2026-new.firebaseapp.com",
+  projectId: "fr-kanyoza-2026-new",
+  storageBucket: "fr-kanyoza-2026-new.firebasestorage.app",
+  messagingSenderId: "1054111043868",
+  appId: "1:1054111043868:web:5283f3228f3b7f816c6ad9",
+  measurementId: "G-B3D7H8540J"
+};
 const app=initializeApp(firebaseConfig);const db=initializeFirestore(app,{localCache:persistentLocalCache({tabManager:persistentMultipleTabManager()})});const storage=getStorage(app);
 let registrations=[];let advertsLocal=JSON.parse(localStorage.getItem('fk_adverts')||'[]');let adFileDataUrl="";let lastReg=null;let certFiles={};let isAfterBackup=false;
 function showToast(m){const t=document.getElementById('toast');document.getElementById('toastMsg').innerText=m;t.classList.remove('hidden');setTimeout(()=>t.classList.add('hidden'),4500);}
