@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Our Family - Template Final For Sale</title>
+<title>Our Family - Designed by Mike Final For Sale</title>
 <style>
 :root{--blue:#0a66ff;--cloudy:#0f172a;--cloudy2:#1e293b;--white:#f8fafc;--red:#ef4444;--black:#020617;--grey:#94a3b8;--green:#22c55e}
 *{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui}
@@ -165,4 +165,27 @@ side.innerHTML=`<div class="card"><h3>Origin Photo 2</h3><div class="photoArea">
 if(tab==='branches'){
 let list=curSub==='auties'?S.aunties:S.uncles;
 let aunt=list[curAuntIndex]||{name:'',phone:'',dob:'',locked:false,children:[]};
-main.innerHTML=`<div class="card"><h3>${curSub==='auties'?'Aunt':'Uncle'} ${curAuntIndex+1} - Watermark: Fill then Lock</h3>${!aunt.locked?`<div class="inputRow"><input placeholder="e.g., Enter ${curSub==='auties'?'Aunt':'Uncle'} Full Name" value="${aunt.name}" id="auntName"><input type="tel" placeholder="e.g., 07XX XXX XXX" value="${aunt.phone}" id="auntPhone"><input type="date" value="${aunt.dob}" id="auntDob"></div><button class="btn btn-green" style="width:100%;padding:12px;margin-top:8px" onclick="lockAunt()">🔒 Lock This Tab</button>`:`<div style="background:#0f172a;padding:12px;border-radius:10px;border:2px solid var(--green)"><b style="color:var(--green)">${aunt.name||'Unnamed'}</b> - ${aunt.phone||''} - 🔒 <button class="btn btn-red" style="margin-left:8px" onclick="unlockAunt()">Unlock</button></div>`}</div><div class="card"><h3>Children - Watermark: 1 with + to add</h3><p style="font-size:11px;color:var(--grey);margin-bottom:8px">Guidance: First child
+main.innerHTML=`<div class="card"><h3>${curSub==='auties'?'Aunt':'Uncle'} ${curAuntIndex+1} - Watermark: Fill then Lock</h3>${!aunt.locked?`<div class="inputRow"><input placeholder="e.g., Enter ${curSub==='auties'?'Aunt':'Uncle'} Full Name" value="${aunt.name}" id="auntName"><input type="tel" placeholder="e.g., 07XX XXX XXX" value="${aunt.phone}" id="auntPhone"><input type="date" value="${aunt.dob}" id="auntDob"></div><button class="btn btn-green" style="width:100%;padding:12px;margin-top:8px" onclick="lockAunt()">🔒 Lock This Tab</button>`:`<div style="background:#0f172a;padding:12px;border-radius:10px;border:2px solid var(--green)"><b style="color:var(--green)">${aunt.name||'Unnamed'}</b> - ${aunt.phone||''} - 🔒 <button class="btn btn-red" style="margin-left:8px" onclick="unlockAunt()">Unlock</button></div>`}</div><div class="card"><h3>Children - Watermark: 1 with + to add</h3><p style="font-size:11px;color:var(--grey);margin-bottom:8px">Guidance: First child hidden inside this parent - + Add Child for more</p><div id="childrenList"></div><button class="btn btn-blue" style="width:100%;margin-top:10px;padding:12px" onclick="addChild()">+ Add Child</button></div>`;
+side.innerHTML=`<div class="card"><h3>Family Photo - Readable</h3><div class="photoArea"><span>e.g., Upload photo for this tab - fits field, readable</span><input type="file" accept="image/*" onchange="up(this,'fam_${curSub}_${curAuntIndex}_1')"><img id="fam_${curSub}_${curAuntIndex}_1"></div></div><div class="card"><h3>Photo 2</h3><div class="photoArea"><span>e.g., Second photo</span><input type="file" accept="image/*" onchange="up(this,'fam_${curSub}_${curAuntIndex}_2')"><img id="fam_${curSub}_${curAuntIndex}_2"></div></div>`;renderChildrenList();loadPhotos();
+}
+}
+window.saveOrigin=(sub,f,v)=>{if(!S.origin[sub]) S.origin[sub]={};S.origin[sub][f]=v;save();};
+window.saveDash=(v)=>{S.dashboard.desc=v;save(); alert('Saved!');};
+window.lockAunt=()=>{let list=curSub==='auties'?S.aunties:S.uncles;let n=document.getElementById('auntName').value.trim(),p=document.getElementById('auntPhone').value.trim(),d=document.getElementById('auntDob').value;if(!n) return alert('Enter name');list[curAuntIndex].name=n;list[curAuntIndex].phone=p;list[curAuntIndex].dob=d;list[curAuntIndex].locked=true;save();renderAuntTabs();render(curTab,curSub);};
+window.unlockAunt=()=>{let list=curSub==='auties'?S.aunties:S.uncles;list[curAuntIndex].locked=false;save();renderAuntTabs();render(curTab,curSub);};
+function renderChildrenList(){
+let list=curSub==='auties'?S.aunties:S.uncles;
+let aunt=list[curAuntIndex]; let cont=document.getElementById('childrenList'); if(!cont) return;
+cont.innerHTML=aunt.children.map((c,i)=>`<div class="childCard"><div class="childHead"><span>${i+1}</span><input placeholder="e.g., Child Name ${i+1}" value="${c.name}" onchange="saveChild(${i},'name',this.value)"><input type="date" value="${c.dob}" onchange="saveChild(${i},'dob',this.value)"><input type="tel" placeholder="e.g., Phone" value="${c.phone}" onchange="saveChild(${i},'phone',this.value)"><button class="btn btn-blue" onclick="addGrand(${i})">+ Produce</button></div><div class="grandChildren">${c.grandchildren.map((g,gi)=>`<div style="display:grid;grid-template-columns:18px 1fr 100px 110px 30px;gap:5px;padding:6px;background:#0f172a;border-radius:8px;margin:4px 0"><span>↳</span><input placeholder="e.g., Grandchild" value="${g.name}" onchange="saveGrand(${i},${gi},'name',this.value)"><input type="date" value="${g.dob}" onchange="saveGrand(${i},${gi},'dob',this.value)"><input type="tel" placeholder="Phone" value="${g.phone}" onchange="saveGrand(${i},${gi},'phone',this.value)"><button class="btn btn-red" onclick="delGrand(${i},${gi})">x</button></div>`).join('')||'<span style="font-size:10px;color:var(--grey)">Guidance: + Produce if has children</span>'}</div></div>`).join('');
+}
+window.saveChild=(i,f,v)=>{let list=curSub==='auties'?S.aunties:S.uncles;list[curAuntIndex].children[i][f]=v;save();};
+window.addChild=()=>{let list=curSub==='auties'?S.aunties:S.uncles;list[curAuntIndex].children.push({name:'',phone:'',dob:'',grandchildren:[]});save();renderChildrenList();};
+window.addGrand=(i)=>{let list=curSub==='auties'?S.aunties:S.uncles;list[curAuntIndex].children[i].grandchildren.push({name:'',dob:'',phone:''});save();renderChildrenList();};
+window.saveGrand=(ci,gi,f,v)=>{let list=curSub==='auties'?S.aunties:S.uncles;list[curAuntIndex].children[ci].grandchildren[gi][f]=v;save();};
+window.delGrand=(ci,gi)=>{let list=curSub==='auties'?S.aunties:S.uncles;list[curAuntIndex].children[ci].grandchildren.splice(gi,1);save();renderChildrenList();};
+window.up=(input,id)=>{let file=input.files[0];if(!file) return;let r=new FileReader();r.onload=e=>{S.photos[id]=e.target.result;save();let el=document.getElementById(id); if(el) el.src=e.target.result;};r.readAsDataURL(file);};
+function loadPhotos(){Object.keys(S.photos||{}).forEach(id=>{let el=document.getElementById(id); if(el) el.src=S.photos[id];});}
+render('origin','p1');renderAuntTabs();
+</script>
+</body>
+</html>
