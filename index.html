@@ -1,65 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Amanya Mike | APP Developer UG</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Family - Template Final For Sale</title>
 <style>
+:root{--blue:#0a66ff;--cloudy:#0f172a;--cloudy2:#1e293b;--white:#f8fafc;--red:#ef4444;--black:#020617;--grey:#94a3b8;--green:#22c55e}
 *{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui}
-body{background:#0a0a0a;color:#fff}
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:24px;background:radial-gradient(circle at 30% 20%,#1e3a8a 0%,transparent 50%),radial-gradient(circle at 80% 80%,#7c3aed 0%,transparent 50%)}
-.hero h1{font-size:48px;font-weight:900;line-height:0.9}.hero h1 span{color:#60a5fa}
-.hero p{margin:18px 0;color:#a1a1aa;max-width:540px}
-.btns{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;justify-content:center}
-.btn{padding:13px 22px;border-radius:999px;font-weight:800;text-decoration:none;transition:.2s}
-.primary{background:#fff;color:#000}.secondary{background:#1f1f1f;color:#fff;border:1px solid #2a2a2a}.email{background:#2563eb;color:#fff}
-.btn:hover{transform:scale(1.05)}
-.card{background:#111;border:1px solid #222;border-radius:24px;padding:22px;margin:12px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));max-width:1000px;margin:40px auto;padding:0 16px}
-.badge{display:inline-block;background:#1e293b;color:#60a5fa;padding:6px 12px;border-radius:999px;font-size:11px;font-weight:900;margin:4px}
-.live{color:#4ade80;font-size:11px;font-weight:900}
-.gallery img{width:100%;max-width:380px;border-radius:20px;border:1px solid #222;margin:8px}
+body{background:linear-gradient(180deg,var(--cloudy),var(--cloudy2));color:var(--white);min-height:100vh}
+header{background:var(--black);padding:14px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid var(--blue)}
+.nav{display:flex;gap:8px;padding:12px 20px;background:var(--cloudy2);position:sticky;top:0;z-index:10;overflow:auto}
+.tab{padding:10px 18px;border-radius:24px;border:1px solid #334155;color:var(--grey);cursor:pointer;background:var(--black);font-weight:600;white-space:nowrap}
+.tab.active{background:var(--blue);color:#fff}
+.tab.emergency{border-color:var(--red);color:var(--red)} .tab.emergency.active{background:var(--red);color:#fff}
+.subNav{display:flex;gap:8px;padding:10px 20px;background:var(--cloudy);overflow:auto}
+.subTab{padding:8px 16px;border-radius:20px;background:var(--cloudy2);border:1px solid #334155;color:var(--grey);cursor:pointer;white-space:nowrap}
+.subTab.active{background:var(--white);color:var(--black)}
+.auntTabs{display:flex;gap:8px;padding:12px 20px;background:var(--black);overflow:auto;border-bottom:1px solid #1e293b;align-items:center}
+.auntTab{padding:10px 16px;border-radius:20px;background:#1e293b;border:1px dashed var(--grey);color:var(--grey);cursor:pointer;font-size:12px;white-space:nowrap}
+.auntTab.active{background:var(--blue);color:#fff;border-style:solid;border-color:var(--blue)}
+.auntTab.locked{border-color:var(--green);color:var(--green)} .auntTab.locked.active{background:var(--green);color:#000}
+.plusTab{padding:0 14px;border-radius:50%;background:var(--blue);color:#fff;cursor:pointer;font-weight:900;border:none;min-width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-size:18px}
+#content{max-width:1300px;margin:auto;padding:16px;display:grid;grid-template-columns:1fr 340px;gap:16px}
+@media(max-width:900px){#content{grid-template-columns:1fr}}
+.card{background:var(--cloudy2);border-radius:20px;padding:18px;margin-bottom:14px;border:1px solid #334155}
+.card h3{color:var(--blue);margin-bottom:10px;font-size:15px}
+.photoArea{width:100%;min-height:200px;background:#0f172a;border:2px dashed var(--blue);border-radius:14px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:6px}
+.photoArea span{font-size:11px;color:var(--grey);text-align:center;z-index:1;pointer-events:none;padding:10px}
+.photoArea.passport{width:150px;height:180px;min-height:180px;border:2px solid var(--red);border-radius:10px}
+.photoArea img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#0f172a;z-index:2}
+.photoArea input{position:absolute;inset:0;opacity:0;cursor:pointer;z-index:3}
+.inputRow{display:grid;grid-template-columns:1fr 140px 140px;gap:8px;margin-bottom:8px}
+@media(max-width:600px){.inputRow{grid-template-columns:1fr}}
+.inputRow input{padding:11px;border-radius:10px;border:1px solid #334155;background:var(--black);color:#fff;font-size:13px}
+.textArea{width:100%;min-height:160px;padding:14px;border-radius:14px;border:1px solid #334155;background:var(--black);color:#fff;resize:vertical;font-size:13px;line-height:1.5}
+.childCard{background:var(--black);border-radius:12px;padding:12px;margin:8px 0;border:1px solid #1e293b}
+.childHead{display:grid;grid-template-columns:28px 1fr 115px 125px 42px;gap:6px;align-items:center}
+@media(max-width:600px){.childHead{grid-template-columns:28px 1fr}}
+.childHead input{padding:8px;border:none;border-bottom:1px solid var(--blue);background:transparent;color:#fff;font-size:12px}
+.grandChildren{margin-left:20px;border-left:3px solid var(--green);padding-left:10px;margin-top:8px}
+.btn{padding:9px 15px;border-radius:20px;border:none;font-weight:700;cursor:pointer;font-size:11px}
+.btn-blue{background:var(--blue);color:#fff} .btn-green{background:var(--green);color:#000} .btn-red{background:var(--red);color:#fff}
+#loginScreen{position:fixed;inset:0;background:var(--black);z-index:1000;display:flex;align-items:center;justify-content:center;padding:16px}
+.loginCard{position:relative;background:#1e293b;border-radius:24px;padding:28px;width:100%;max-width:400px;border:1px solid #334155;text-align:center}
+.loginCard input{width:100%;padding:13px;margin:7px 0;border-radius:10px;border:1px solid #334155;background:#0f172a;color:#fff;outline:none;font-size:14px}
+.gear{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;background:#0f172a;border:1px solid #334155;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:5}
+.hidden{display:none}
+footer{background:var(--black);text-align:center;padding:14px;border-top:3px solid var(--blue);color:var(--grey);font-size:12px}
 </style>
 </head>
 <body>
-<div class="hero">
-<img src="mike-ceo.jpg" style="width:140px;height:140px;border-radius:999px;border:3px solid #60a5fa;object-fit:cover;margin-bottom:14px">
-<h1>AMANYA<br><span>MIKE</span></h1>
-<p>ICT Developer from Uganda — Building live school systems with Firebase. I love ICT no 1 hobby 💝</p>
-
-<div class="btns">
-<a class="btn primary" href="https://wa.me/256763821339">WhatsApp</a>
-<a class="btn secondary" style="background:#1877F2" href="https://facebook.com/" target="_blank">Facebook</a>
-<a class="btn secondary" style="background:#FF0000" href="https://youtube.com/" target="_blank">YouTube</a>
-<a class="btn email" href="mailto:mikeamanya0000@gmail.com?subject=Hi%20Mike%20from%20Portfolio">Email Me</a>
+<header><h1>OUR <b style="color:var(--blue)">FAMILY</b> - TEMPLATE</h1><div><span id="uEmail" style="font-size:11px;color:var(--grey)"></span><span id="logout" style="color:var(--red);cursor:pointer;margin-left:10px;font-weight:700">Logout</span></div></header>
+<div class="nav"><div class="tab active" data-tab="origin">Origin</div><div class="tab" data-tab="branches">Family Branches</div><div class="tab" data-tab="dash">Dashboard</div><div class="tab emergency" data-tab="emergency">🚨 Emergency</div></div>
+<div id="originSub" class="subNav"><div class="subTab active" data-sub="p1">Partner 1</div><div class="subTab" data-sub="p2">Partner 2</div></div>
+<div id="branchesSub" class="subNav hidden"><div class="subTab active" data-sub="auties">Aunties</div><div class="subTab" data-sub="uncles">Uncles</div></div>
+<div id="auntTabsContainer" class="auntTabs hidden"></div>
+<div id="content"><div class="main" id="mainContent"></div><div class="side" id="sideContent"></div></div>
+<footer>ONE FAMILY • Free Template - Watermark Guide Inside • Professional Family Storage</footer>
+<div id="emergencyOverlay" style="position:fixed;inset:0;background:var(--red);z-index:2000;display:none;flex-direction:column;align-items:center;justify-content:center;padding:20px;text-align:center;color:#fff"><div style="width:100px;height:100px;border:5px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:40px">📞</div><h1 style="margin-top:12px">🚨 EMERGENCY</h1><p id="currentCall" style="font-weight:900;margin:8px">Grouping...</p><button class="btn" style="background:#fff;color:var(--red);padding:14px 22px;margin-top:14px" onclick="muteEmergency()">🔇 MUTE</button></div>
+<div id="loginScreen">
+<div class="loginCard" id="firstBox">
+<div class="gear" id="gear">⚙️</div>
+<h3 style="color:var(--blue);margin-top:22px">Strong Access Admin</h3>
+<p style="font-size:11px;color:var(--grey);margin:6px 0 14px">Admin only - click gear to reveal</p>
+<input type="password" id="firstPass" placeholder="Enter strong key" autocomplete="off" spellcheck="false" style="letter-spacing:3px">
+<button class="btn btn-blue" style="width:100%;margin-top:14px;padding:13px" id="firstBtn">ENTER</button>
 </div>
-
-<div class="btns">
-<a class="btn secondary" href="mailto:amanyamike321@gmail.com?subject=Project%20Inquiry">amanyamike321@gmail.com</a>
-<a class="btn secondary" href="#projects">View Projects ↓</a>
+<div class="loginCard hidden" id="setBox"><h3>Set Website Password Once</h3><input type="password" id="newPass" placeholder="e.g., Create website password" autocomplete="off" style="margin-top:14px"><input type="password" id="confPass" placeholder="e.g., Confirm password" autocomplete="off" style="margin-top:10px"><button class="btn btn-blue" style="width:100%;padding:13px;margin-top:14px" id="setBtn">SET PASSWORD</button></div>
+<div class="loginCard hidden" id="emailBox"><h3>Sign In</h3><input type="email" id="emailIn" placeholder="e.g., family@gmail.com" style="margin-top:14px"><input type="password" id="passIn" placeholder="e.g., Website password" style="margin-top:10px"><button class="btn btn-blue" style="width:100%;padding:13px;margin-top:14px" id="emailBtn">SIGN IN</button></div>
 </div>
-
-<div style="display:flex;flex-wrap:wrap;justify-content:center;margin-top:22px">
-<img src="mike-hero.jpg" class="gallery-img" style="width:100%;max-width:360px;border-radius:20px;border:1px solid #222;margin:6px">
-<img src="mike-ceo.jpg" class="gallery-img" style="width:100%;max-width:360px;border-radius:20px;border:1px solid #222;margin:6px">
-</div>
-</div>
-
-<div id="projects" class="grid">
-<div class="card">
-<div class="live">● LIVE NOW</div>
-<h2 style="margin:10px 0">Fr Kanyonza Schools System</h2>
-<p style="color:#a1a1aa;font-size:14px">Live advert system — Admin uploads → parents get instant push notification. Built with Firebase + Firestore.</p>
-<div style="margin:14px 0"><span class="badge">Firebase</span><span class="badge">Push Notifications</span><span class="badge">Live</span></div>
-<a class="btn secondary" style="display:inline-block" href="https://fr-kanyoza-2026-new.web.app" target="_blank">Open Live App →</a>
-</div>
-<div class="card"><h2>Skills</h2><div style="margin-top:10px"><span class="badge">HTML/CSS</span><span class="badge">JavaScript</span><span class="badge">Firebase Hosting</span><span class="badge">GitHub Pages</span><span class="badge">Firestore</span></div></div>
-<div class="card"><h2>Contact</h2><p style="color:#a1a1aa;margin-top:8px">Tap Email to send me message directly — opens Gmail.</p><a class="btn email" href="mailto:mikeamanya0000@gmail.com?subject=Project%20From%20Portfolio&body=Hello%20Mike," style="display:inline-block;margin-top:12px">mikeamanya0000@gmail.com</a></div>
-</div>
-
-<footer style="text-align:center;padding:32px 20px;border-top:1px solid #1f1f1f;margin-top:30px">
-<p style="font-weight:900">ICT Administrator: Mr. Bright Silvano — 0761459404</p>
-<p style="color:#60a5fa;margin-top:8px;font-size:13px">mikeamanya0000@gmail.com | amanyamike321@gmail.com</p>
-<p style="color:#555;margin-top:14px;font-size:11px">© 2026 Amanya Mike — Built with patience 💞</p>
-</footer>
-</body>
-</html>
+<script>
+let S=JSON.parse(localStorage.getItem('our_family_final_mike')||'{}');
+if(!S.aunties){
+S={adminSet:false,webPass:'',dashboard:{desc:''},origin:{p1:{name:'',phone:'',dob:''},p2:{name:'',phone:'',dob:''}},aunties:[{name:'',phone:'',dob:'',locked:false,children:[{name:'',phone:'',dob:'',grandchildren:[]}]}],uncles:[{name:'',phone:'',dob:'',locked:false,children:[{name:'',phone:'',dob:'',grandchildren:[]}]}],photos:{},emails:[]};
+for(let i=1;i<4;i++){S.aunties.push({name:'',phone:'',dob:'',locked:false,children:[{name:'',phone:'',dob:'',grandchildren:[]}]});S.uncles.push({name:'',phone:'',dob:'',locked:false,children:[{name:'',phone:'',dob:'',grandchildren:[]}]})}
+}
+function save(){localStorage.setItem('our_family_final_mike',JSON.stringify(S))}
+const loginScreen=document.getElementById('loginScreen'),firstBox=document.getElementById('firstBox'),setBox=document.getElementById('setBox'),emailBox=document.getElementById('emailBox');
+document.getElementById('gear').onclick=()=>{let i=document.getElementById('firstPass');if(i.type==='password'){i.type='text'; i.value='miketechsolutions'; setTimeout(()=>{i.type='password'; i.value='';},2500);}else{i.type='password'; i.value='';}};
+function showScreen(){if(!S.adminSet){firstBox.classList.remove('hidden');setBox.classList.add('hidden');emailBox.classList.add('hidden');}else{firstBox.classList.add('hidden');setBox.classList.add('hidden');emailBox.classList.remove('hidden');}}showScreen();
+document.getElementById('firstBtn').onclick=()=>{if(document.getElementById('firstPass').value==='miketechsolutions'){firstBox.classList.add('hidden');setBox.classList.remove('hidden');}else{alert('Wrong key - click gear ⚙️');}};document.getElementById('setBtn').onclick=()=>{let p=document.getElementById('newPass').value,c=document.getElementById('confPass').value;if(p.length<5) return alert('Short');if(p!==c) return alert('No match');S.webPass=p;S.adminSet=true;save();setBox.classList.add('hidden');emailBox.classList.remove('hidden');};
+document.getElementById('emailBtn').onclick=()=>{let e=document.getElementById('emailIn').value,p=document.getElementById('passIn').value;if(!e.includes('@')) return alert('Email');if(p!==S.webPass) return alert('Wrong');S.emails.push(e);save();loginScreen.style.display='none';document.getElementById('uEmail').innerText=e;render('origin','p1');};
+document.getElementById('logout').onclick=()=>location.reload();
+let curTab='origin',curSub='p1',curAuntIndex=0;
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));t.classList.add('active');
+curTab=t.dataset.tab;
+document.getElementById('originSub').classList.toggle('hidden',curTab!=='origin');
+document.getElementById('branchesSub').classList.toggle('hidden',curTab!=='branches');
+document.getElementById('auntTabsContainer').classList.toggle('hidden',curTab!=='branches');
+curSub=curTab==='origin'?'p1':curTab==='branches'?'auties':'dash';
+if(curTab==='branches') renderAuntTabs();
+render(curTab,curSub);
+});
+document.querySelectorAll('.subTab').forEach(s=>s.onclick=()=>{
+s.parentElement.querySelectorAll('.subTab').forEach(x=>x.classList.remove('active'));s.classList.add('active');
+curSub=s.dataset.sub;curAuntIndex=0;
+if(curTab==='branches') renderAuntTabs();
+render(curTab,curSub);
+});
+function renderAuntTabs(){
+let cont=document.getElementById('auntTabsContainer');
+let list=curSub==='auties'?S.aunties:S.uncles;
+let html=list.map((a,i)=>`<div class="auntTab ${a.locked?'locked':''} ${i===curAuntIndex?'active':''}" onclick="selectAunt(${i})">${a.locked&&a.name?a.name:`${curSub==='auties'?'Aunt':'Uncle'} ${i+1} - e.g., Enter Name`} ${a.locked?'🔒':''}</div>`).join('');
+html+=`<button class="plusTab" onclick="addTab()">+</button>`;
+cont.innerHTML=html;
+}
+window.selectAunt=(i)=>{curAuntIndex=i;renderAuntTabs();render(curTab,curSub);};
+window.addTab=()=>{
+let list=curSub==='auties'?S.aunties:S.uncles;
+list.push({name:'',phone:'',dob:'',locked:false,children:[{name:'',phone:'',dob:'',grandchildren:[]}]});
+save();curAuntIndex=list.length-1;renderAuntTabs();render(curTab,curSub);
+};
+let emergencyActive=false, allPhones=[], emergencyTimer=null;
+function collectContacts(){
+let groups={origin:[],aunties:[],uncles:[],children:[],grandchildren:[]};
+Object.values(S.origin).forEach(o=>{if(o.phone) groups.origin.push({name:o.name||'Origin Partner',phone:o.phone,group:'Origin'})});
+S.aunties.forEach(a=>{if(a.phone) groups.aunties.push({name:a.name||'Aunt',phone:a.phone,group:'Aunties'}); a.children.forEach(c=>{if(c.phone) groups.children.push({name:c.name||'Child of '+a.name,phone:c.phone,group:'Children'}); c.grandchildren.forEach(g=>{if(g.phone) groups.grandchildren.push({name:g.name||'Grandchild',phone:g.phone,group:'Grandchildren'})})})});
+S.uncles.forEach(a=>{if(a.phone) groups.uncles.push({name:a.name||'Uncle',phone:a.phone,group:'Uncles'}); a.children.forEach(c=>{if(c.phone) groups.children.push({name:c.name||'Child of '+a.name,phone:c.phone,group:'Children'}); c.grandchildren.forEach(g=>{if(g.phone) groups.grandchildren.push({name:g.name||'Grandchild',phone:g.phone,group:'Grandchildren'})})})});
+return groups;
+}
+function startEmergency(){
+let groups=collectContacts();
+let all=[...groups.origin,...groups.aunties,...groups.uncles,...groups.children,...groups.grandchildren];
+if(!all.length){alert('Guidance: Add phone contacts first - e.g., 07XX XXX XXX');return;}
+allPhones=all;emergencyActive=true;document.getElementById('emergencyOverlay').style.display='flex';
+let idx=0;
+function autoRingAll(){
+if(!emergencyActive) return;
+if(idx>=allPhones.length){document.getElementById('currentCall').innerText=`All ${allPhones.length} contacts rung!`; return;}
+let c=allPhones[idx];
+document.getElementById('currentCall').innerText=`Ringing ${idx+1}/${allPhones.length}: ${c.name} (${c.group}) - ${c.phone}`;
+window.location.href='tel:'+c.phone;
+idx++;
+}
+autoRingAll();
+emergencyTimer=setInterval(()=>{if(!emergencyActive){clearInterval(emergencyTimer);return;} if(idx<allPhones.length){autoRingAll();}},4000);
+}
+window.muteEmergency=()=>{emergencyActive=false;clearInterval(emergencyTimer);document.getElementById('emergencyOverlay').style.display='none';};
+window.triggerEmergency=startEmergency;
+function render(tab,sub){
+const main=document.getElementById('mainContent'),side=document.getElementById('sideContent');
+if(tab==='emergency'){
+let groups=collectContacts();
+let total=Object.values(groups).flat().length;
+let html=`<div class="card" style="background:var(--red);border:none"><h3 style="color:#fff">🚨 Emergency - Auto Collect Grouped</h3><p style="color:#fff;font-size:11px;margin:6px 0">Guidance: Auto collects all phones filled in site - grouped</p><button class="btn" style="background:#fff;color:var(--red);padding:16px;width:100%;font-weight:900;font-size:14px" onclick="triggerEmergency()">🔴 TAP TO RING ALL AT ONCE (${total} contacts)</button></div>`;
+for(let key of ['origin','aunties','uncles','children','grandchildren']){
+let arr=groups[key]; if(!arr.length) continue;
+html+=`<div class="card"><h4 style="color:var(--blue);font-size:12px;margin-bottom:8px">${key.toUpperCase()} - ${arr.length} - Watermark: Auto grouped</h4>${arr.map(c=>`<div style="display:flex;justify-content:space-between;padding:8px;background:var(--black);border-radius:8px;margin:4px 0"><div><b style="font-size:12px">${c.name}</b><br><small style="color:var(--grey)">${c.phone}</small></div><a href="tel:${c.phone}" style="color:var(--blue);font-weight:900;text-decoration:none">📞</a></div>`).join('')}</div>`;
+}
+if(total===0) html+=`<div class="card"><p style="font-size:12px;color:var(--grey)">Watermark: No contacts yet - Guidance: Fill phones in tabs - e.g., 07XX</p></div>`;
+main.innerHTML=html;
+side.innerHTML=`<div class="card"><h3>Emergency Photo 1</h3><div class="photoArea"><span>Watermark: e.g., Upload emergency photo - readable</span><input type="file" accept="image/*" onchange="up(this,'em1')"><img id="em1"></div></div><div class="card"><h3>Emergency Photo 2</h3><div class="photoArea"><span>Watermark: Second photo</span><input type="file" accept="image/*" onchange="up(this,'em2')"><img id="em2"></div></div>`;loadPhotos();return;
+}
+if(tab==='dash'){
+main.innerHTML=`<div class="card"><h3>Dashboard</h3><p style="font-size:12px;color:var(--grey)">Aunties: ${S.aunties.length} | Uncles: ${S.uncles.length}</p></div><div class="card"><h3>Family Description / Background - Fill Here</h3><p style="font-size:11px;color:var(--grey);margin-bottom:8px">Watermark: e.g., Write family background, history, values, clan, origin story</p><textarea class="textArea" placeholder="e.g., Our family background: We are the [Family Name] family. Origin: [Village]. Clan: [Clan]. Values: Love, Unity. History: Our grandfather... etc." onchange="saveDash(this.value)">${S.dashboard.desc||''}</textarea><button class="btn btn-blue" style="margin-top:10px" onclick="saveDash(document.querySelector('.textArea').value)">💾 Save</button></div>`;
+side.innerHTML=`<div class="card"><h3>Dashboard Photo 1</h3><div class="photoArea"><span>e.g., Family group photo - readable, fits field</span><input type="file" accept="image/*" onchange="up(this,'dash1')"><img id="dash1"></div></div><div class="card"><h3>Dashboard Photo 2</h3><div class="photoArea"><span>e.g., Second photo</span><input type="file" accept="image/*" onchange="up(this,'dash2')"><img id="dash2"></div></div>`;loadPhotos();return;
+}
+if(tab==='origin'){
+let data=S.origin[sub]||{};
+main.innerHTML=`<div class="card"><h3>Origin - Family Photo</h3><div class="photoArea" style="min-height:280px"><span>Watermark: e.g., Upload family origin photo - readable, fits field</span><input type="file" accept="image/*" onchange="up(this,'fam')"><img id="fam"></div></div><div class="card"><h3>${sub==='p1'?'Partner 1':'Partner 2'} - Passport</h3><div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start"><div class="photoArea passport"><span>Watermark: e.g., Passport size</span><input type="file" accept="image/*" onchange="up(this,'pass_${sub}')"><img id="pass_${sub}"></div><div style="flex:1;display:grid;gap:8px"><input placeholder="e.g., Enter Full Name" value="${data.name||''}" onchange="saveOrigin('${sub}','name',this.value)"><input type="date" value="${data.dob||''}" onchange="saveOrigin('${sub}','dob',this.value)"><input type="tel" placeholder="e.g., 07XX XXX XXX" value="${data.phone||''}" onchange="saveOrigin('${sub}','phone',this.value)"></div></div></div>`;
+side.innerHTML=`<div class="card"><h3>Origin Photo 2</h3><div class="photoArea"><span>e.g., Second photo</span><input type="file" accept="image/*" onchange="up(this,'orig2')"><img id="orig2"></div></div>`;loadPhotos();return;
+}
+if(tab==='branches'){
+let list=curSub==='auties'?S.aunties:S.uncles;
+let aunt=list[curAuntIndex]||{name:'',phone:'',dob:'',locked:false,children:[]};
+main.innerHTML=`<div class="card"><h3>${curSub==='auties'?'Aunt':'Uncle'} ${curAuntIndex+1} - Watermark: Fill then Lock</h3>${!aunt.locked?`<div class="inputRow"><input placeholder="e.g., Enter ${curSub==='auties'?'Aunt':'Uncle'} Full Name" value="${aunt.name}" id="auntName"><input type="tel" placeholder="e.g., 07XX XXX XXX" value="${aunt.phone}" id="auntPhone"><input type="date" value="${aunt.dob}" id="auntDob"></div><button class="btn btn-green" style="width:100%;padding:12px;margin-top:8px" onclick="lockAunt()">🔒 Lock This Tab</button>`:`<div style="background:#0f172a;padding:12px;border-radius:10px;border:2px solid var(--green)"><b style="color:var(--green)">${aunt.name||'Unnamed'}</b> - ${aunt.phone||''} - 🔒 <button class="btn btn-red" style="margin-left:8px" onclick="unlockAunt()">Unlock</button></div>`}</div><div class="card"><h3>Children - Watermark: 1 with + to add</h3><p style="font-size:11px;color:var(--grey);margin-bottom:8px">Guidance: First child
